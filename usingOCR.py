@@ -90,4 +90,25 @@ for i in range(1, filelimit + 1):
     f.write(text)
 
 # Close the file after writing all the text.
+
 f.close()
+
+arr = []
+found = False
+with open('ReadingOCR.txt', 'r') as f:
+    for line in f:
+        if found:
+            if "Questao 04" in line:
+                break
+            else:
+                line = line.rstrip('\n')
+                if len(line) > 0:
+                    arr.append(line)
+        if "Questao 03" in line:
+            found = True
+
+print(arr)
+
+#Separar o enunciado das alternativas
+#Alternativas (últimas 4 linhas com um ponto no final? Meio incerto isso)
+#Vou tentar outro modo de ler pdf
