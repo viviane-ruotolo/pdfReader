@@ -15,6 +15,8 @@ import pytesseract
 import sys
 from pdf2image import convert_from_path
 import os
+import re
+
 
 # Path of the pdf
 PDF_file = "OnlyText_2_pages.pdf"
@@ -48,7 +50,7 @@ for page in pages:
     image_counter = image_counter + 1
 
 '''
-Part #2 - Recognizing text from the images using OCR
+Part #2 - Recognizing text from the images using OCR and trying to select an specific part from text (error)
 '''
 
 # Variable to get count of total number of pages
@@ -85,6 +87,15 @@ for i in range(1, filelimit + 1):
     # orGeeks is half on first line, remaining on next.
     # To remove this, we replace every '-\n' to ''.
     text = text.replace('-\n', '')
+
+
+    try:
+        found = re.search('AAA(.+?)ZZZ', text).group(1)
+    except AttributeError:
+        # AAA, ZZZ not found in the original string
+        found = '' # apply your error handling
+
+    # found: 1234
 
     # Finally, write the processed text to the file.
     f.write(text)
