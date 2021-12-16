@@ -2,6 +2,7 @@
 from PyPDF2 import PdfFileReader, PdfFileWriter
 
 file_path = 'OnlyText_2_pages.pdf'
+#file_path = 'ImagesAndText.pdf'
 pdf = PdfFileReader(file_path)
 
 with open('Reading.txt', 'w') as f:
