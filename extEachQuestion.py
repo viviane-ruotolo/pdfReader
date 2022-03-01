@@ -55,3 +55,5 @@ for i in range(0, doc.pageCount):
 
 #page1text is String -> Find "Questão " in String
 #If it founds question 10, so it writes on question 10
+
+#Ver a leitura do gabarito
