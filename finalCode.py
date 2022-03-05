@@ -3,9 +3,8 @@
 
 import fitz
 
-#pdf_document = "OnlyText_2_pages.pdf"
-#pdf_document = 'ImagesAndText.pdf'
-pdf_document = 'ImagesAndText.pdf'
+#pdf_document = "Exams/OnlyText_2_pages.pdf"
+pdf_document = 'Exams/ImagesAndText.pdf'
 
 doc = fitz.open(pdf_document)
 print ("number of pages: %i" % doc.pageCount)
