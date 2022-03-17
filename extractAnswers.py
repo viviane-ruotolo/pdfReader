@@ -1,41 +1,31 @@
 #!/usr/bin/python3
 
-
 import fitz
 
-#pdf_document = "OnlyText_2_pages.pdf"
-#pdf_document = 'ImagesAndText.pdf'
-#pdf_document = 'Exams/gabarito2020.pdf'
+#PDF path and name
 pdf_document = 'Exams/gabarito2019.pdf'
 
+#Extract data from pdf
 doc = fitz.open(pdf_document)
-#f = open("Answers2020.txt", "w")
-f = open("Answers.txt", "w")
-print ("number of pages: %i" % doc.pageCount)
-print(doc.metadata)
-print(doc.pageCount)
-
-
 page = doc.load_page(0)
 pageToString = page.get_text("text")
 
-#Posso apagar esse txt depois
-f.write(pageToString)
-f.close()
-
+#Write data on List
 pageToList = pageToString.split("\n")
 print(pageToList)
 
+#Reference for english and spanish Answers
 counter = 0
+#Current question
 number = 0
+
+#Save each answer in which .txt
 for i in range(0, len(pageToList)):
 
     element = pageToList[i].strip(" ")
     print("element " + element)
-    #print(element)
+
     if element.isnumeric():
-        #testar se a sring tem só números e condições para salvar respostas
-        #print("É um número")
         number = int(eval(str(element)))
         counter = 0
 
@@ -48,7 +38,6 @@ for i in range(0, len(pageToList)):
                 print(element)
                 answer = open("Answers/" + str(number) + "-ENG.txt", "w")
             else:
-                #Salva as respostas do espanhol em inglês
                 print("SPA")
                 print(element)
                 answer = open("Answers/" + str(number) + "-SPA.txt", "w")
@@ -58,15 +47,3 @@ for i in range(0, len(pageToList)):
 
         answer.write(element)
         answer.close()
-    #print(len(element))
-
-
-
-
-
-#ListToInt = int(pageToList[5])
-
-#print(ListToInt)
-
-#page1text is String -> Find "Questão " in String
-#If it founds question 10, so it writes on question 10
